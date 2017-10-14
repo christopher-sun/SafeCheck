@@ -15,14 +15,8 @@
       },
       "oauth_client": [
         {
-          "client_id": "752359854545-s6tkhpeachkcnh6pusmko8hc77edo32s.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "cddj.gatech.edu.safecheck",
-            "certificate_hash": "469621bcaa8843af6d2af112ac92ecb283a5553e"
-          }
-        },
-        {
+
+
           "client_id": "752359854545-p6rk3mqh1hdgorlkne7gq1d0errihl81.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
