@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText userName;
     private EditText userPhone;
 
+    private static Account newAccount;
+
     private static String username;
     private static String userPhoneNum;
 
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                     userPhoneNum = getUserPhone();
                     username = getUsername();
 
-                    final Account newAccount = new Account(userPhoneNum, username);
+                    newAccount = new Account(userPhoneNum, username);
                     newAccount.getContacts().add("+14254453074");
                     newAccount.getContacts().add("+18882345678");
 
@@ -63,5 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
     public String getUserPhone() {
         return userPhone.getText().toString();
+    }
+
+    public static String getUserPhoneNum() {
+        return userPhoneNum;
+    }
+
+    public static Account getNewAccount() {
+        return newAccount;
     }
 }
