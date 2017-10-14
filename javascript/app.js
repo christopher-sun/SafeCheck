@@ -20,14 +20,14 @@ client = twilio(accountSid, authToken);
 
 var numbers = ['+14254453074', '+16788231926'];
 
-for( var i = 0; i < numbers.length; i++ ) {
-    client.messages.create({
-        body: 'no more yo',
-        to: numbers[i],  // Text this number
-        from: '+12064830490' // From a valid Twilio number
-    })
-    .then((message) => console.log(message.sid));
-}
+//for( var i = 0; i < numbers.length; i++ ) {
+//    client.messages.create({
+//        body: 'no more yo',
+//        to: numbers[i],  // Text this number
+//        from: '+12064830490' // From a valid Twilio number
+//    })
+//    .then((message) => console.log(message.sid));
+//}
 
 var express = require('express'),
 bodyParser = require('body-parser'),
@@ -53,19 +53,20 @@ var database = firebase.database();
 
 app.post('/message', function (req, res) {
     var fromNum = req.body.From;
-    var contacts;
+    var text = req.body.Body.trim();
     var contactsRef = database.ref('/users/' + fromNum + '/contacts').once('value').then(function(snapshot) {
-        contacts = (snapshot.val() && snapshot.val().contacts)
+        var contacts = snapshot.val();
+
+        for( var i = 0; i < contacts.length; i++ ) {
+            client.messages.create({
+                body: text,
+                to: contacts[i],
+                from: '+12064830490'
+            })
+            .then((message) => console.log(message.sid));
+        }
     });
-    for( var i = 0; i < contacts.length; i++ ) {
-        console.log(contacts[i]);
-        client.messages.create({
-            body: 'testtesttest',
-            to: contacts[i],
-            from: '+12064830490'
-        })
-        .then((message) => console.log(message.sid));
-    }
+
     // var resp = new twilio.twiml.MessagingResponse();
     // if( req.body.Body.trim().toLowerCase() === 'subscribe' ) {
     //     var fromNum = req.body.From;
