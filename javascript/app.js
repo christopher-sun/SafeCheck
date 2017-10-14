@@ -22,7 +22,7 @@ var numbers = ['+14254453074', '+16788231926'];
 
 for( var i = 0; i < numbers.length; i++ ) {
     client.messages.create({
-        body: 'yo',
+        body: 'no more yo',
         to: numbers[i],  // Text this number
         from: '+12064830490' // From a valid Twilio number
     })
@@ -53,11 +53,14 @@ var database = firebase.database();
 
 app.post('/message', function (req, res) {
     var fromNum = req.body.From;
-    var contacts = database.ref('/users/' + fromNum + 'contacts/');
-    console.log(contacts);
+    var contacts;
+    var contactsRef = database.ref('/users/' + fromNum + '/contacts').once('value').then(function(snapshot) {
+        contacts = (snapshot.val() && snapshot.val().contacts)
+    });
     for( var i = 0; i < contacts.length; i++ ) {
+        console.log(contacts[i]);
         client.messages.create({
-            body: req.body.Body.trim(),
+            body: 'testtesttest',
             to: contacts[i],
             from: '+12064830490'
         })
@@ -78,7 +81,7 @@ app.post('/message', function (req, res) {
     res.writeHead(200, {
         'Content-Type':'text/xml'
     });
-    res.end(resp.toString());
+//    res.end(resp.toString());
 });
 
 // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
