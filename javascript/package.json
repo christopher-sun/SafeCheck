@@ -1,0 +1,29 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "package.json for SafeCheck",
+  "main": "app.js",
+  "scripts": {
+    "test": "checkkk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christopher-sun/SafeCheck.git"
+  },
+  "keywords": [
+    "disaster",
+    "relief"
+  ],
+  "author": "David Zhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christopher-sun/SafeCheck/issues"
+  },
+  "homepage": "https://github.com/christopher-sun/SafeCheck#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "firebase": "^4.5.1",
+    "twilio": "^3.8.1"
+  }
+}
