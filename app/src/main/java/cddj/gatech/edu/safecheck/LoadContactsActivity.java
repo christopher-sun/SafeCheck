@@ -36,8 +36,13 @@ public class LoadContactsActivity extends AppCompatActivity {
 
     private Account addContacts() {
         newAccount = MainActivity.getNewAccount();
+        int i = 0;
         for (String num : phoneNums) {
             newAccount.getContacts().add(num);
+            i++;
+            if (i == 10) {
+                break;
+            }
         }
         return newAccount;
     }
