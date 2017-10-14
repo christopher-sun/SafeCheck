@@ -1,71 +1,74 @@
+var accountSid = 'ACfce496f254e2545a7b8251b1d7537302'; // Your Account SID from www.twilio.com/console
+var authToken = '1e90c12a9ff2bfd7c7279d999975f7b1';   // Your Auth Token from www.twilio.com/console
+
 var twilio = require('twilio'),
-client = twilio('ACCOUNTSID', 'AUTHTOKEN');
+client = twilio(accountSid, authToken);
 // cronJob = require('cron').CronJob;
 
-var numbers = ['YOURPHONENUMBER', 'YOURFRIENDSPHONENUMBER'];
+var numbers = ['+14254453074', '+16788231926'];
 
 for( var i = 0; i < numbers.length; i++ ) {
-    client.sendMessage( { to:numbers[i], from:'YOURTWILIONUMBER', body:'Hello! Hope you’re having a good day.'}, function( err, data ) {
+    client.sendMessage( { to:numbers[i], from:'+12064830490', body:'Hello! Hope you’re having a good day.'}, function( err, data ) {
         console.log( data.body );
     });
 }
 
-var express = require('express'),
-bodyParser = require('body-parser'),
-app = express();
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-
-app.post('/message', function (req, res) {
-    var resp = new twilio.TwimlResponse();
-    resp.message('Thanks for subscribing!');
-    res.writeHead(200, {
-        'Content-Type':'text/xml'
-    });
-    res.end(resp.toString());
-});
-
-var server = app.listen(3000, function() {
-    console.log('Listening on port %d', server.address().port);
-});
-
-var Firebase = require('firebase'),
-usersRef = new Firebase('https://safecheck-2017.firebaseio.com/Users/');
-
-var config = {
-    apiKey: "AIzaSyCfzPkYsLtY1adV3U5ZLqrCm0soAFYJUFk",
-    authDomain: "safecheck-2017.firebaseapp.com",
-    databaseURL: "https://safecheck-2017.firebaseio.com",
-    projectId: "safecheck-2017",
-    storageBucket: "",
-    messagingSenderId: "752359854545"
-};
-firebase.initializeApp(config);
-
-var numbers = [];
-usersRef.on('child_added', function(snapshot) {
-numbers.push( snapshot.val() );
-  console.log( 'Added number ' + snapshot.val() );
-});
-
-app.post('/message', function (req, res) {
-    var resp = new twilio.TwimlResponse();
-    if( req.body.Body.trim().toLowerCase() === 'subscribe' ) {
-        var fromNum = req.body.From;
-        if(numbers.indexOf(fromNum) !== -1) {
-            resp.message('You already subscribed!');
-        } else {
-            resp.message('Thank you, you are now subscribed. Reply "STOP" to stop receiving updates.');
-            usersRef.push(fromNum);
-        }
-    } else {
-        resp.message('Welcome to Daily Updates. Text "Subscribe" receive updates.');
-    }
-
-    res.writeHead(200, {
-        'Content-Type':'text/xml'
-    });
-    res.end(resp.toString());
-});
+//var express = require('express'),
+//bodyParser = require('body-parser'),
+//app = express();
+//app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({
+//    extended: true
+//}));
+//
+//app.post('/message', function (req, res) {
+//    var resp = new twilio.TwimlResponse();
+//    resp.message('Thanks for subscribing!');
+//    res.writeHead(200, {
+//        'Content-Type':'text/xml'
+//    });
+//    res.end(resp.toString());
+//});
+//
+//var server = app.listen(3000, function() {
+//    console.log('Listening on port %d', server.address().port);
+//});
+//
+//var Firebase = require('firebase'),
+//usersRef = new Firebase('https://safecheck-2017.firebaseio.com/Users/');
+//
+//var config = {
+//    apiKey: "AIzaSyCfzPkYsLtY1adV3U5ZLqrCm0soAFYJUFk",
+//    authDomain: "safecheck-2017.firebaseapp.com",
+//    databaseURL: "https://safecheck-2017.firebaseio.com",
+//    projectId: "safecheck-2017",
+//    storageBucket: "",
+//    messagingSenderId: "752359854545"
+//};
+//firebase.initializeApp(config);
+//
+//var numbers = [];
+//usersRef.on('child_added', function(snapshot) {
+//numbers.push( snapshot.val() );
+//  console.log( 'Added number ' + snapshot.val() );
+//});
+//
+//app.post('/message', function (req, res) {
+//    var resp = new twilio.TwimlResponse();
+//    if( req.body.Body.trim().toLowerCase() === 'subscribe' ) {
+//        var fromNum = req.body.From;
+//        if(numbers.indexOf(fromNum) !== -1) {
+//            resp.message('You already subscribed!');
+//        } else {
+//            resp.message('Thank you, you are now subscribed. Reply "STOP" to stop receiving updates.');
+//            usersRef.push(fromNum);
+//        }
+//    } else {
+//        resp.message('Welcome to Daily Updates. Text "Subscribe" receive updates.');
+//    }
+//
+//    res.writeHead(200, {
+//        'Content-Type':'text/xml'
+//    });
+//    res.end(resp.toString());
+//});

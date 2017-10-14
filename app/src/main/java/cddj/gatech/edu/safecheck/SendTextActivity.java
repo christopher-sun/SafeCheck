@@ -3,6 +3,7 @@ package cddj.gatech.edu.safecheck;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -22,6 +23,13 @@ class SendTextActivity extends AppCompatActivity {
 
         editText = (EditText) findViewById(R.id.editText);
         sendButton = (Button) findViewById(R.id.sendButton);
+
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
     }
