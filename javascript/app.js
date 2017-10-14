@@ -8,11 +8,14 @@ client = twilio(accountSid, authToken);
 var numbers = ['+14254453074', '+16788231926'];
 
 for( var i = 0; i < numbers.length; i++ ) {
-    client.sendMessage( { to:numbers[i], from:'+12064830490', body:'Hello! Hope you’re having a good day.'}, function( err, data ) {
-        console.log( data.body );
-    });
+    client.messages.create({
+        body: 'fuck wid it',
+        to: numbers[i],  // Text this number
+        from: '+12064830490' // From a valid Twilio number
+    })
+    .then((message) => console.log(message.sid));
 }
-
+//
 //var express = require('express'),
 //bodyParser = require('body-parser'),
 //app = express();
@@ -21,14 +24,14 @@ for( var i = 0; i < numbers.length; i++ ) {
 //    extended: true
 //}));
 //
-//app.post('/message', function (req, res) {
-//    var resp = new twilio.TwimlResponse();
-//    resp.message('Thanks for subscribing!');
-//    res.writeHead(200, {
-//        'Content-Type':'text/xml'
-//    });
-//    res.end(resp.toString());
-//});
+////app.post('/message', function (req, res) {
+////    var resp = new twilio.TwimlResponse();
+////    resp.message('Thanks for subscribing!');
+////    res.writeHead(200, {
+////        'Content-Type':'text/xml'
+////    });
+////    res.end(resp.toString());
+////});
 //
 //var server = app.listen(3000, function() {
 //    console.log('Listening on port %d', server.address().port);
