@@ -1,8 +1,32 @@
 package cddj.gatech.edu.safecheck;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
+import android.widget.EditText;
+
 /**
  * Created by juliachen on 10/14/17.
  */
 
-class SendTextActivity {
+class SendTextActivity extends AppCompatActivity {
+
+    private EditText editText;
+    private Button sendButton;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_send_text);
+
+        editText = (EditText) findViewById(R.id.editText);
+        sendButton = (Button) findViewById(R.id.sendButton);
+
+
+    }
+
+    public String getText() {
+        return editText.getText().toString();
+    }
 }
