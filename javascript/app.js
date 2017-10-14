@@ -24,15 +24,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-//app.post('/message', function (req, res) {
-//    var resp = new twilio.TwimlResponse();
-//    resp.message('Thanks for subscribing!');
-//    res.writeHead(200, {
-//        'Content-Type':'text/xml'
-//    });
-//    res.end(resp.toString());
-//});
-
 var server = app.listen(3000, function() {
     console.log('Listening on port %d', server.address().port);
 });
