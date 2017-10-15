@@ -7,14 +7,14 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Confirm Contact"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="231dp"
         android:layout_marginLeft="116dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginTop="231dp"
+        android:text="Confirm Contact"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/NumberTextView"

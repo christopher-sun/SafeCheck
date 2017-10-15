@@ -43,6 +43,7 @@ public class LoadContactsActivity extends AppCompatActivity {
 
         nameField = findViewById(R.id.NameTextView);
         numberField = findViewById(R.id.NumberTextView);
+        confirmButton = findViewById(R.id.confirmButton);
 
         nameField.setText(name);
         numberField.setText(number);
