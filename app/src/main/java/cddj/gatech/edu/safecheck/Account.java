@@ -24,4 +24,8 @@ public class Account {
     public String getNumber() {
         return number;
     }
+
+    public String getUsername() {
+        return username;
+    }
 }
